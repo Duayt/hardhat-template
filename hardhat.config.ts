@@ -7,6 +7,7 @@ dotenvConfig({ path: resolve(__dirname, "./.env") });
 import { HardhatUserConfig } from "hardhat/types";
 import { NetworkUserConfig } from "hardhat/types";
 
+import 'hardhat-deploy';
 import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "@nomiclabs/hardhat-ethers";
@@ -75,11 +76,8 @@ const config: HardhatUserConfig = {
   solidity: {
     compilers: [
       {
-        version: "0.6.12",
-      },
-      {
-        version: "0.6.6",
-      },
+        version: "0.8.4",
+      }
     ],
   },
   etherscan: {
@@ -93,6 +91,12 @@ const config: HardhatUserConfig = {
   typechain: {
     outDir: "typechain",
     target: "ethers-v5",
+  },
+  namedAccounts: {
+    deployer: {
+        default: 0, 
+        1: 0 // mainnet
+      }
   },
 };
 
